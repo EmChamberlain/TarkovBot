@@ -38,11 +38,10 @@ for item in default:
 csvCols = ['Id', 'FriendlyName', 'Category', 'Priority']
 
 try:
-    with open("AutoLoot.csv", "w", encoding="utf8") as f:
+    with open("AUTOlootIems.csv", "w", encoding="utf8", newline='') as f:
         writer = csv.DictWriter(f, fieldnames=csvCols)
         writer.writeheader()
-        for data in default:
-            writer.writerow(data)
+        writer.writerows(default)
 except IOError:
     print("I/O error")
 
