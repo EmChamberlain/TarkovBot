@@ -24,6 +24,11 @@ with open('lootItems.csv', "r", encoding="utf8") as f:
 for item in default:
     if item['Priority'] == priorities[-1]:
         continue
+    if item['Category'] == 'Money':
+        item['Priority'] = priorities[2]
+        continue
+    if item['Category'] == 'Unknown':
+        continue
 
     key = item['Id']
     if key not in apiDictionary:
@@ -38,7 +43,7 @@ for item in default:
 csvCols = ['Id', 'FriendlyName', 'Category', 'Priority']
 
 try:
-    with open("AUTOlootIems.csv", "w", encoding="utf8", newline='') as f:
+    with open("AUTOlootItems.csv", "w", encoding="utf8", newline='') as f:
         writer = csv.DictWriter(f, fieldnames=csvCols)
         writer.writeheader()
         writer.writerows(default)
