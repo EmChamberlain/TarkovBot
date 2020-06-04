@@ -29,6 +29,9 @@ for item in default:
         continue
     if item['Category'] == 'Unknown':
         continue
+    if item['Category'] == 'Lootable':
+        item['Priority'] = priorities[-1]
+        continue
 
     key = item['Id']
     if key not in apiDictionary:
@@ -39,6 +42,8 @@ for item in default:
         if pps > minimums[i]:
             item['Priority'] = priorities[i]
             break
+
+    item['FriendlyName'] = apiRow['shortName']
 
 csvCols = ['Id', 'FriendlyName', 'Category', 'Priority']
 
