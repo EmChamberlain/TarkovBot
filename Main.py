@@ -42,8 +42,8 @@ for item in default:
         if pps > minimums[i]:
             item['Priority'] = priorities[i]
             break
-
-    item['FriendlyName'] = apiRow['shortName']
+    if len(apiRow['shortName']) > 2:
+        item['FriendlyName'] = apiRow['shortName']
 
 csvCols = ['Id', 'FriendlyName', 'Category', 'Priority']
 
